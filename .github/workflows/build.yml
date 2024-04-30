@@ -5,10 +5,9 @@ name: Build
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "build" ]
   pull_request:
     branches: [ "main" ]
-  workflow_dispatch:
     
 
 jobs:
