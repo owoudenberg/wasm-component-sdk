@@ -4,14 +4,14 @@
             DependsOnTargets="WitCompile_GetDependencies; CompileCabiRealloc; WitCompile_InvokeTool">
         <ItemGroup>
             <Compile Include="$(WitGeneratedFilesRoot)**\*.cs" />
-            <NativeObjects Include="$(WitGeneratedFilesRoot)**\*.o" />
+            <NativeObjects Include="$(WitGeneratedFilesRoot)\%(Wit.World)World_component_type.o" />
         </ItemGroup>
     </Target>
 
     <Target Name="CompileCabiRealloc" BeforeTargets="IlcCompile" DependsOnTargets="WitCompile_InvokeTool" Inputs="$(WitGeneratedCabiReallocSourceFile)" Outputs="$(WitGeneratedFilesRoot)cabi_realloc.o" Condition="Exists($(WitGeneratedCabiReallocSourceFile))">
-        <Exec Command="emcc.bat &quot;$(WitGeneratedCabiReallocSourceFile)&quot; -c -o &quot;$(WitGeneratedFilesRoot)cabi_realloc.o&quot;"/>
+        <Exec Command="emcc.bat &quot;$(WitGeneratedCabiReallocSourceFile)&quot; -c -o &quot;$(WitGeneratedFilesRoot)%(Wit.World)World_cabi_realloc.o&quot;"/>
         <ItemGroup>
-            <NativeObjects Include="$(WitGeneratedFilesRoot)cabi_realloc.o" />
+            <NativeObjects Include="$(WitGeneratedFilesRoot)\%(Wit.World)World_cabi_realloc.o" />
         </ItemGroup>
     </Target>
 
